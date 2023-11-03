@@ -13,11 +13,16 @@ int perfect_nodes(int level);
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int actual_nodes;
+	int levels;
+	int perfect_number;
+
 	if (!tree)
 		return (0);
-	int actual_nodes = number_of_nodes(tree);
-	int levels = height_of_tree(tree);
-	int perfect_number = perfect_nodes(levels);
+
+	actual_nodes = number_of_nodes(tree);
+	levels = height_of_tree(tree);
+	perfect_number = perfect_nodes(levels);
 
 	if (actual_nodes != perfect_number)
 		return (0);
