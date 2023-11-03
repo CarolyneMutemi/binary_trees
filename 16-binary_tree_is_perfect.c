@@ -50,11 +50,14 @@ int number_of_nodes(const binary_tree_t *tree)
 
 int height_of_tree(const binary_tree_t *tree)
 {
+	int height_left;
+	int height_right;
+
 	if (!tree || (!tree->left && !tree->right))
 		return (0);
 
-	int height_left = height_of_tree(tree->left);
-	int height_right = height_of_tree(tree->right);
+	height_left = height_of_tree(tree->left);
+	height_right = height_of_tree(tree->right);
 
 	return (((height_left > height_right) ? height_left : height_right) + 1);
 }
