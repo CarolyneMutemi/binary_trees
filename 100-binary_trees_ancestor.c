@@ -14,11 +14,11 @@ const binary_tree_t *second)
 		return (NULL);
 
 	if (first == second)
-		return (binary_tree_t *)((void *)(first));
+		return ((binary_tree_t *)((void *)(first)));
 	else if (first == second->parent)
-		return (binary_tree_t *)((void *)(first));
+		return ((binary_tree_t *)((void *)(first)));
 	else if (second == first->parent)
-		return (binary_tree_t *)((void *)(second));
+		return ((binary_tree_t *)((void *)(second)));
 
 	return (binary_trees_ancestor(first->parent, second->parent));
 }
