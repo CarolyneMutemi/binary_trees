@@ -43,5 +43,7 @@ int main(void)
     launch_test(root->left, root->right);
     launch_test(root->right->left, root->right->right->right);
     launch_test(root->right->right, root->right->right->right);
+    launch_test(root->left, root->left);
+    launch_test(root->right->right->right, root->left->left);
     return (0);
 }
