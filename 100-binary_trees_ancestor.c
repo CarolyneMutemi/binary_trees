@@ -12,6 +12,7 @@ const binary_tree_t *second)
 {
 	binary_tree_t *result_1;
 	binary_tree_t *result_2;
+
 	if (!first || !second)
 		return (NULL);
 
@@ -28,6 +29,6 @@ const binary_tree_t *second)
 		return (result_1);
 	if (result_2)
 		return (result_2);
-	
+
 	return (binary_trees_ancestor(first->parent, second->parent));
 }
