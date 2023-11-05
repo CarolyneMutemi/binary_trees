@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdio.h>
 
 /**
  * binary_trees_ancestor - finds the lowest common ancestor of two nodes.
@@ -10,25 +11,39 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
-	binary_tree_t *result_1;
-	binary_tree_t *result_2;
+	binary_tree_t **nodes_array_first = NULL;
+	binary_tree_t *first_copy = (binary_tree_t *)(void *)first;
+	binary_tree_t *second_copy = (binary_tree_t *)(void *)second;
+
+	int index = 0;
+	int size = 10;
+	int i;
 
 	if (!first || !second)
 		return (NULL);
 
-	if (first == second->parent)
-		return ((binary_tree_t *)((void *)(first)));
-	if (second == first->parent)
-		return ((binary_tree_t *)((void *)(second)));
-	if (first == second)
-		return ((binary_tree_t *)((void *)(first)));
+	nodes_array_first = malloc(sizeof(binary_tree_t *) * size);
+	while (first_copy)
+	{
+		if (index >= size)
+		{
+			size = index + 10;
+			nodes_array_first = realloc(nodes_array_first,
+			sizeof(binary_tree_t *) * size);
+		}
+		nodes_array_first[index] = first_copy;
+		first_copy = first_copy->parent;
+		index += 1;
+	}
 
-	result_1 = binary_trees_ancestor(first, second->parent);
-	result_2 = binary_trees_ancestor(second, first->parent);
-	if (result_1)
-		return (result_1);
-	if (result_2)
-		return (result_2);
-
-	return (binary_trees_ancestor(first->parent, second->parent));
+	while (second_copy)
+	{
+		for (i = 0; i < index; i++)
+		{
+			if (second_copy == nodes_array_first[i])
+				return (second_copy);
+		}
+		second_copy = second_copy->parent;
+	}
+	return (NULL);
 }
