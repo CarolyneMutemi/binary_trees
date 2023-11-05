@@ -15,15 +15,15 @@ const binary_tree_t *second)
 	if (!first || !second)
 		return (NULL);
 
+	if (first == second->parent)
+		return ((binary_tree_t *)((void *)(first)));
+	if (second == first->parent)
+		return ((binary_tree_t *)((void *)(second)));
 	if (first == second)
 		return ((binary_tree_t *)((void *)(first)));
-	else if (first == second->parent)
-		return ((binary_tree_t *)((void *)(first)));
-	else if (second == first->parent)
-		return ((binary_tree_t *)((void *)(second)));
 
-	result_1 = binary_trees_ancestor(first->parent, second);
-	result_2 = binary_trees_ancestor(second->parent, first);
+	result_1 = binary_trees_ancestor(first, second->parent);
+	result_2 = binary_trees_ancestor(second, first->parent);
 	if (result_1)
 		return (result_1);
 	if (result_2)
