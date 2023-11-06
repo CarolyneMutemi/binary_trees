@@ -31,6 +31,8 @@ int main(void)
 
     binary_tree_print(root);
     binary_tree_levelorder(root, &print_num);
+    printf("====\n");
+    binary_tree_levelorder(root->right->right, &print_num);
     binary_tree_delete(root);
     return (0);
 }

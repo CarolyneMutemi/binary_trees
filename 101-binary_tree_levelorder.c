@@ -18,6 +18,11 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 
 	if (!tree || !func)
 		return;
+	if (!tree->left && !tree->right)
+	{
+		func(tree->n);
+		return;
+	}
 
 	array[0] = (binary_tree_t *)(void *)tree;
 	index = add_kids(tree, array, 1);
