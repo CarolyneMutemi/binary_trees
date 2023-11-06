@@ -11,6 +11,9 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
+	if (!first || !second)
+		return (NULL);
+
 	binary_tree_t **nodes_array_first = NULL;
 	binary_tree_t *first_copy = (binary_tree_t *)(void *)first;
 	binary_tree_t *second_copy = (binary_tree_t *)(void *)second;
@@ -18,9 +21,6 @@ const binary_tree_t *second)
 	int index = 0;
 	int size = 10;
 	int i;
-
-	if (!first || !second)
-		return (NULL);
 
 	nodes_array_first = malloc(sizeof(binary_tree_t *) * size);
 	while (first_copy)
