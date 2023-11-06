@@ -11,12 +11,15 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
+	binary_tree_t **nodes_array_first;
+	binary_tree_t *first_copy;
+	binary_tree_t *second_copy;
+
 	if (!first || !second)
 		return (NULL);
 
-	binary_tree_t **nodes_array_first = NULL;
-	binary_tree_t *first_copy = (binary_tree_t *)(void *)first;
-	binary_tree_t *second_copy = (binary_tree_t *)(void *)second;
+	first_copy = (binary_tree_t *)(void *)first;
+	second_copy = (binary_tree_t *)(void *)second;
 
 	int index = 0;
 	int size = 10;
